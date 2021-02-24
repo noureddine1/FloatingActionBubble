@@ -25,8 +25,9 @@ class BubbleMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      shape: StadiumBorder(),
-      padding: EdgeInsets.only(top: 11, bottom: 13, left: 32, right: 32),
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Color(0xff4a7900)),
+          borderRadius: BorderRadius.circular(12.0)),
       color: item.bubbleColor,
       splashColor: Colors.grey.withOpacity(0.1),
       highlightColor: Colors.grey.withOpacity(0.1),
@@ -34,23 +35,27 @@ class BubbleMenu extends StatelessWidget {
       highlightElevation: 2,
       disabledColor: item.bubbleColor,
       onPressed: item.onPress,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          item.icon != null
-              ? Icon(
-                  item.icon,
-                  color: item.iconColor,
-                )
-              : Container(),
-          SizedBox(
-            width: 10.0,
-          ),
-          Text(
-            item.title,
-            style: item.titleStyle,
-          ),
-        ],
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.07,
+        width: MediaQuery.of(context).size.width * 0.3,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Text(
+              item.title,
+              style: item.titleStyle,
+            ),
+            SizedBox(
+              width: 10.0,
+            ),
+            item.icon != null
+                ? Icon(
+                    item.icon,
+                    color: item.iconColor,
+                  )
+                : Container(),
+          ],
+        ),
       ),
     );
   }
@@ -138,15 +143,30 @@ class FloatingActionBubble extends AnimatedWidget {
           backgroundColor: backGroundColor,
           // iconData is mutually exclusive with animatedIconData
           // only 1 can be null at the time
-          child: iconData == null
-              ? AnimatedIcon(
-                  icon: animatedIconData,
-                  progress: _animation,
-                )
-              : Icon(
-                  iconData,
-                  color: iconColor,
-                ),
+          child: Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xff6ea811),
+                  Color(0xff4a7900),
+                ],
+                begin: Alignment(0.0, 1.0),
+                end: Alignment(0.0, -1.0),
+              ),
+            ),
+            child: iconData == null
+                ? AnimatedIcon(
+                    icon: animatedIconData,
+                    progress: _animation,
+                  )
+                : Icon(
+                    iconData,
+                    color: iconColor,
+                  ),
+          ),
           onPressed: onPress,
         ),
       ],
