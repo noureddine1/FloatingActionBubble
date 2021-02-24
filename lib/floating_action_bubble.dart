@@ -41,23 +41,24 @@ class BubbleMenu extends StatelessWidget {
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              item.title,
-              style: item.titleStyle,
-            ),
-            SizedBox(
-              width: 10.0,
-            ),
-            item.icon != null
-                ? Icon(
-                    item.icon,
-                    color: item.iconColor,
-                  )
-                : Container(),
-          ],
-        ),),
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              item.icon != null
+                  ? Icon(
+                      item.icon,
+                      color: item.iconColor,
+                    )
+                  : Container(),
+              SizedBox(
+                width: 10.0,
+              ),
+              Text(
+                item.title,
+                style: item.titleStyle,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
