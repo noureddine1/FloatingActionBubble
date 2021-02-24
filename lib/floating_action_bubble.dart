@@ -38,7 +38,9 @@ class BubbleMenu extends StatelessWidget {
       child: Container(
         height: MediaQuery.of(context).size.height * 0.07,
         width: MediaQuery.of(context).size.width * 0.3,
-        child: Row(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
@@ -55,7 +57,7 @@ class BubbleMenu extends StatelessWidget {
                   )
                 : Container(),
           ],
-        ),
+        ),),
       ),
     );
   }
