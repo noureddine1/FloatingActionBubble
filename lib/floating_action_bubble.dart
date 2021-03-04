@@ -37,7 +37,7 @@ class BubbleMenu extends StatelessWidget {
       onPressed: item.onPress,
       child: Container(
         height: MediaQuery.of(context).size.height * 0.07,
-        width: MediaQuery.of(context).size.width * 0.3,
+        width: MediaQuery.of(context).size.width * 0.45,
         child: Directionality(
           textDirection: TextDirection.rtl,
           child: Row(
